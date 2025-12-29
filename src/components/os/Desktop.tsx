@@ -298,8 +298,10 @@ const Desktop: React.FC<DesktopProps> = () => {
   if (isMobile) {
       return (
           <div style={styles.mobileOverlay}>
-              <div style={styles.mobileText}>Please use desktop for the best experience.</div>
-              <a href="https://forms.gle/GrX29i8Nf3toXMtYA">FORM LINK</a>
+              <div style={styles.mobileContent}>
+                  <div style={styles.mobileText}>Please use desktop for the best experience.</div>
+                  <a style={styles.mobileLink} href="https://forms.gle/GrX29i8Nf3toXMtYA">Open form</a>
+              </div>
           </div>
       );
   }
@@ -392,6 +394,37 @@ const styles: StyleSheetCSS = {
     minimized: {
         pointerEvents: 'none',  // disable the interaaction with minimized windows
         opacity: 0,             // hides minimized windows completely
+    },
+    mobileOverlay: {
+        position: 'fixed',
+        inset: 0,
+        backgroundColor: '#000000',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 99999,
+    },
+    mobileContent: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 12,
+        padding: 20,
+    },
+    mobileText: {
+        color: '#ffffff',
+        fontSize: 18,
+        textAlign: 'center',
+        maxWidth: 360,
+    },
+    mobileLink: {
+        color: '#ffffff',
+        backgroundColor: 'rgba(255,255,255,0.08)',
+        padding: '8px 12px',
+        borderRadius: 6,
+        textDecoration: 'none',
+        fontWeight: 600,
     },
 };
 
