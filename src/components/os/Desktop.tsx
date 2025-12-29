@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Toolbar from "./Toolbar"
 import ShutdownSequence from './ShutdownSequence';
-import { Test } from "../applications/Test";
 import { Settings } from "../applications/Settings";
 import { Camera } from "../applications/Camera";
 import { Miyabi } from "../applications/Miyabi";

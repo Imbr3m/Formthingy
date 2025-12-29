@@ -1,9 +1,8 @@
 import React from 'react'
 import Window from '../os/Window';
-import useInitialWindowSize from '../../hooks/useInitialWindowSize';
 
 // Components import
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { Frame, styleReset } from 'react95';
 import { useTheme } from '../../contexts/ThemeContext';
 

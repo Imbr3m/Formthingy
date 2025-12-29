@@ -2,10 +2,11 @@
   "name": "raintop",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://imbr3m.github.io/Formthingy",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build --base=./",
     "lint": "eslint .",
     "preview": "vite preview"
   },
