@@ -83,6 +83,8 @@ const Desktop: React.FC<DesktopProps> = () => {
 
   // shutdown sequence state
   const [shutdown, setShutdown] = useState(false);
+    // detect mobile users
+    const [isMobile, setIsMobile] = useState(false);
   // shutdown sewuence counter
   const [numShutdowns, setNumShutdowns] = useState(1);
   // shutdown sequence effect
@@ -91,6 +93,20 @@ const Desktop: React.FC<DesktopProps> = () => {
           rebootDesktop();
       }
   }, [shutdown]);
+
+  useEffect(() => {
+      try {
+          if (typeof navigator !== 'undefined' && navigator.userAgent) {
+              const ua = navigator.userAgent || '';
+              const mobile = /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile/.test(ua);
+              setIsMobile(mobile);
+          } else if (typeof window !== 'undefined') {
+              setIsMobile(window.innerWidth <= 768);
+          }
+      } catch (e) {
+          setIsMobile(false);
+      }
+  }, []);
 
  
   useEffect(() => {
@@ -279,6 +295,14 @@ const Desktop: React.FC<DesktopProps> = () => {
       }, 40); // 40ms delay
   }, [addWindow, onWindowInteract, minimizeWindow, removeWindow]);
 
+  if (isMobile) {
+      return (
+          <div style={styles.mobileOverlay}>
+              <div style={styles.mobileText}>Please use desktop for the best experience.</div>
+          </div>
+      );
+  }
+
   return !shutdown ? (
         <GlobalThemeProvider>
         <div style={styles.desktop}>
@@ -367,6 +391,21 @@ const styles: StyleSheetCSS = {
     minimized: {
         pointerEvents: 'none',  // disable the interaaction with minimized windows
         opacity: 0,             // hides minimized windows completely
+    },
+    mobileOverlay: {
+        position: 'fixed',
+        inset: 0,
+        backgroundColor: '#000000',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 99999,
+    },
+    mobileText: {
+        color: '#ffffff',
+        fontSize: 18,
+        textAlign: 'center',
+        padding: 20,
     },
 };
 
