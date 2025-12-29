@@ -299,6 +299,7 @@ const Desktop: React.FC<DesktopProps> = () => {
       return (
           <div style={styles.mobileOverlay}>
               <div style={styles.mobileText}>Please use desktop for the best experience.</div>
+              <a href="https://forms.gle/GrX29i8Nf3toXMtYA">FORM LINK</a>
           </div>
       );
   }
@@ -391,21 +392,6 @@ const styles: StyleSheetCSS = {
     minimized: {
         pointerEvents: 'none',  // disable the interaaction with minimized windows
         opacity: 0,             // hides minimized windows completely
-    },
-    mobileOverlay: {
-        position: 'fixed',
-        inset: 0,
-        backgroundColor: '#000000',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        zIndex: 99999,
-    },
-    mobileText: {
-        color: '#ffffff',
-        fontSize: 18,
-        textAlign: 'center',
-        padding: 20,
     },
 };
 
